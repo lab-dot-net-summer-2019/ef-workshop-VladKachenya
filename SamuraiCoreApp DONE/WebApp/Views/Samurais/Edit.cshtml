@@ -12,9 +12,9 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="SecretIdentity.Id" />
-            <input type="hidden" asp-for="SecretIdentity.SamuraiId" />
+            <input type="hidden" asp-for="Id" value="@Model.Id"/>
+            <input type="hidden" asp-for="SecretIdentity.Id" value="@Model.SecretIdentity.Id"/>
+            <input type="hidden" asp-for="SecretIdentity.SamuraiId" value="@Model.SecretIdentity.SamuraiId" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />

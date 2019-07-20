@@ -4,6 +4,15 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20190720113146_someEntity.cs" />
+    <Compile Remove="Migrations\20190720113146_someEntity.Designer.cs" />
+    <Compile Remove="Migrations\20190720113608_someEntity.cs" />
+    <Compile Remove="Migrations\20190720113608_someEntity.Designer.cs" />
+    <Compile Remove="Migrations\20190720124401_someEntity1.cs" />
+    <Compile Remove="Migrations\20190720124401_someEntity1.Designer.cs" />
+  </ItemGroup>
+
    <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SamuraiApp.Data;
 
 namespace SamuraiApp.Data.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    partial class SamuraiContextModelSnapshot : ModelSnapshot
+    [Migration("20190720114741_someEntity")]
+    partial class someEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,20 +80,7 @@ namespace SamuraiApp.Data.Migrations
 
                     b.HasIndex("SamuraiId");
 
-                    b.ToTable("SamuraiBattles");
-                });
-
-            modelBuilder.Entity("SamuraiApp.Domain.SamuraiSomeEntity", b =>
-                {
-                    b.Property<int>("SomeEntityId");
-
-                    b.Property<int>("SamuraiId");
-
-                    b.HasKey("SomeEntityId", "SamuraiId");
-
-                    b.HasIndex("SamuraiId");
-
-                    b.ToTable("SamuraiSomeEntity");
+                    b.ToTable("SamuraiBattle");
                 });
 
             modelBuilder.Entity("SamuraiApp.Domain.SecretIdentity", b =>
@@ -150,22 +139,9 @@ namespace SamuraiApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SamuraiApp.Domain.SamuraiSomeEntity", b =>
-                {
-                    b.HasOne("SamuraiApp.Domain.SomeEntity", "SomeEntity")
-                        .WithMany("SamuraiSomeEntities")
-                        .HasForeignKey("SamuraiId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SamuraiApp.Domain.Samurai", "Samurai")
-                        .WithMany("SamuraiSomeEntities")
-                        .HasForeignKey("SomeEntityId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("SamuraiApp.Domain.SecretIdentity", b =>
                 {
-                    b.HasOne("SamuraiApp.Domain.Samurai", "Samurai")
+                    b.HasOne("SamuraiApp.Domain.Samurai")
                         .WithOne("SecretIdentity")
                         .HasForeignKey("SamuraiApp.Domain.SecretIdentity", "SamuraiId")
                         .OnDelete(DeleteBehavior.Cascade);
