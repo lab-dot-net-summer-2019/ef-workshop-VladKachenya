@@ -35,7 +35,9 @@ namespace WebApp.Controllers
 
             //TODO
             //Get single Samurai, including quotes and SecretIdentity with id = id (query param)
-            var samurai = await _context.Samurais.SingleOrDefaultAsync(s => s.Id == id.Value);
+            var samurai = await _context.Samurais
+                .Include(s => s.SecretIdentity)
+                .SingleOrDefaultAsync(s => s.Id == id.Value);
 
             if (samurai == null)
             {
